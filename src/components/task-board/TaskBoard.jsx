@@ -1,6 +1,6 @@
 import './TaskBoard.scss';
 import Button from '@mui/material/Button';
-
+import TaskCard from '../utils/task-card/Taskcard';
 const TaskBoard = () => {
     return (
         <div className="taskboard-container">
@@ -13,6 +13,7 @@ const TaskBoard = () => {
             <div className="task-stage-flex-container">
                 <div className="task-stage-flex-item">
                     <h5>OPEN</h5>
+                    <TaskCard title="task one" description="this is for test" />
                 </div>
                 <div className="task-stage-flex-item">
                     <h5>IN PROGRESS</h5>
