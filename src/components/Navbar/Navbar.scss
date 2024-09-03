@@ -1,0 +1,26 @@
+.navbar-container {
+    display: flex;
+    padding: 1rem 10rem;
+    align-items: center;
+    box-shadow: 0px 2.8px 5.6px 0px rgba(171,190,209,0.4);
+    background-color: var(--white);
+
+    .title {
+        color: var(--blue);
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+
+    .right-side-menu {
+        margin-left: auto;
+
+        ul {
+            display: flex;
+        }
+
+        li {
+            list-style-type: none;
+            margin-right: 1rem;
+        }
+    }
+}
