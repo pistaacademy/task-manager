@@ -2,13 +2,14 @@
 import './App.css';
 
 import Navbar from './components/Navbar/Navbar';
-import TaskBoard from './components/task-board/TaskBoard';
+import Routes from './components/Routes';
+
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <TaskBoard />
+      <Routes />
     </div>
   );
 }

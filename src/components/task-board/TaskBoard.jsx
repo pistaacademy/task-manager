@@ -6,11 +6,14 @@ import { useEffect, useState } from 'react';
 import useFetchPosts from '../../hooks/useFetchPosts';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
+import { useNavigate } from 'react-router-dom';
 
 const TaskBoard = () => {
 
     const {loading, error, data} = useFetchPosts();
     const [openTaskList, setOpenTaskList] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(()=> {
         if(data){
@@ -31,7 +34,7 @@ const TaskBoard = () => {
             <div className="title-container">
                 <h3>Task Board</h3>
                 <div className='add-task-btn'>
-                    <Button variant="outlined">Add Task</Button>
+                    <Button variant="outlined" onClick={() => navigate("/add-new-task")}>Add Task</Button>
                 </div>
             </div>
             <div className="task-stage-flex-container">
