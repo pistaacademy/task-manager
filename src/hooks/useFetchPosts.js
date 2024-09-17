@@ -16,7 +16,7 @@ const useFetchPosts = () => {
                     description: obj.body,
                 };
             })
-            setData(modifiedResp)
+            setData(modifiedResp.slice(0,4))
         })
         .catch(error => {
             setError(error)

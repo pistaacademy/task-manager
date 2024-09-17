@@ -7,19 +7,27 @@ import useFetchPosts from '../../hooks/useFetchPosts';
 import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const TaskBoard = () => {
-
+    const {data: storeData} = useSelector((state) => state.taskSlice);
     const {loading, error, data} = useFetchPosts();
     const [openTaskList, setOpenTaskList] = useState([]);
+    const [taskList, setTaskList] = useState([]);
 
     const navigate = useNavigate();
 
     useEffect(()=> {
         if(data){
-            setOpenTaskList(data.filter((obj) => obj.status === "Open"));
+            setTaskList([...data, ...storeData])
         }
-    },[data]);
+    },[data, storeData]);
+
+    useEffect(()=> {
+        if(taskList){
+            setOpenTaskList(taskList.filter((obj) => obj.status === "Open"));
+        }
+    },[taskList]);
 
     if(loading){
         return <CircularProgress color="secondary" />

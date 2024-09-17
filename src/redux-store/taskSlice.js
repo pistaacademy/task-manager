@@ -24,8 +24,12 @@ const initialState = {
         getTaskList: (state, action) => {
             return state.date;
         },
+        addNewTask: (state, action) => {
+            state.data = [...state.data, action.payload];
+            return state;
+        }
     },
   });
 
-  export const { getTaskList } = taskSlice.actions;
+  export const { getTaskList,addNewTask } = taskSlice.actions;
   export default taskSlice.reducer;
