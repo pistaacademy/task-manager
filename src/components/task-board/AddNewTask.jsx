@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { useDispatch } from "react-redux";
 import { addNewTask } from "../../redux-store/taskSlice";
 import { useNavigate } from "react-router-dom";
-
+import './AddNewTask.scss';
 
 const AddNewTask = () => {
 
@@ -46,7 +46,10 @@ const AddNewTask = () => {
                 label="Task Description" 
                 handleTextArea={handleTextArea}
             />
-            <Button variant="outlined" onClick={() => handleSaveBtn()} >Save</Button>
+            <div className="add-new-task-btns">
+                <Button className="add-new-task-btn" variant="contained" color="primary" onClick={() => handleSaveBtn()} >Save</Button>
+                <Button className="add-new-task-btn" variant="outlined"  onClick={() => navigate(-1)} >Cancel</Button>
+            </div>
         </div>
     )
 };
