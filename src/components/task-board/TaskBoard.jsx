@@ -8,12 +8,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import EditTask from './EditTask';
 
 const TaskBoard = () => {
     const {data: storeData} = useSelector((state) => state.taskSlice);
     const {loading, error, data} = useFetchPosts();
     const [openTaskList, setOpenTaskList] = useState([]);
     const [taskList, setTaskList] = useState([]);
+    const [showEditTask, setShowEditTask] = useState(false);
 
     const navigate = useNavigate();
 
@@ -31,6 +33,13 @@ const TaskBoard = () => {
 
     const handleDelete = (id) => {
         setTaskList(openTaskList.filter((task)=> task.id !== id))
+    }
+
+    const openDrawer = () => {
+        setShowEditTask(true)
+    }
+    const closeDrawer = () => {
+        setShowEditTask(false)
     }
 
     if(loading){
@@ -53,7 +62,15 @@ const TaskBoard = () => {
                 <div className="task-stage-flex-item">
                     <h5>OPEN</h5>
                     {openTaskList && openTaskList.map((task)=> {
-                        return <TaskCard handleDelete={handleDelete} key={task.id} id={task.id} title={task.title} description={task.description} />
+                        return <TaskCard 
+                            openDrawer={openDrawer} 
+                            handleDelete={handleDelete} 
+                            key={task.id} 
+                            id={task.id} 
+                            title={task.title} 
+                            description={task.description} 
+                            closeDrawer={closeDrawer}
+                            />
                     })}
                 </div>
                 <div className="task-stage-flex-item">
@@ -66,6 +83,9 @@ const TaskBoard = () => {
                     <h5>DONE</h5>
                 </div>
             </div>
+
+            <EditTask showEditTask={showEditTask} closeDrawer={closeDrawer} />
+
         </div>
     )
 }
