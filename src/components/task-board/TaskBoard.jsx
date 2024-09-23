@@ -29,6 +29,10 @@ const TaskBoard = () => {
         }
     },[taskList]);
 
+    const handleDelete = (id) => {
+        setTaskList(openTaskList.filter((task)=> task.id !== id))
+    }
+
     if(loading){
         return <CircularProgress color="secondary" />
     }
@@ -49,7 +53,7 @@ const TaskBoard = () => {
                 <div className="task-stage-flex-item">
                     <h5>OPEN</h5>
                     {openTaskList && openTaskList.map((task)=> {
-                        return <TaskCard key={task.id} title={task.title} description={task.description} />
+                        return <TaskCard handleDelete={handleDelete} key={task.id} id={task.id} title={task.title} description={task.description} />
                     })}
                 </div>
                 <div className="task-stage-flex-item">
