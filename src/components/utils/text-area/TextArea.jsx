@@ -1,5 +1,6 @@
 import './TextArea.scss';
 
+
 const TextArea = ({placeholder, label, value, handleTextArea}) => {
     return (
         <div className='text-area-container'>
