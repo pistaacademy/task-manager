@@ -1,6 +1,6 @@
 import './TextInput.scss';
 
-const TextInput = ({placeholder, label, value, handleTextInput}) => {
+const TextInput = ({placeholder, label, defaultValue, handleTextInput}) => {
     return (
         <div className='text-input-container'>
             <label htmlFor="text-input">{label}</label>
@@ -8,7 +8,7 @@ const TextInput = ({placeholder, label, value, handleTextInput}) => {
                 id='text-input' 
                 className='text-input' 
                 placeholder={placeholder} 
-                value={value}
+                defaultValue={defaultValue}
                 onChange={(e) => handleTextInput(e)} 
             />
         </div>

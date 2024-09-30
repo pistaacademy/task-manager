@@ -16,7 +16,7 @@ const statusOptions = [
     { label: "Done", value: "Done"},
 ]
 
-const EditTask = ({showEditTask, closeDrawer}) => {
+const EditTask = ({showEditTask, closeDrawer,tskTitle,taskDescription}) => {
 
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDesc, setTaskDesc] = useState("");
@@ -44,8 +44,8 @@ const EditTask = ({showEditTask, closeDrawer}) => {
     return (
         <Drawer open={showEditTask} onClose={() => closeDrawer()} PaperProps={{ sx: {width: 400, padding: "1rem" }}}>
             <h3>Edit Task</h3>
-            <TextInput handleTextInput={handleTextInput} label="Task Title" />
-            <TextArea handleTextArea={handleTextArea} label="Task Desc" />
+            <TextInput handleTextInput={handleTextInput} label="Task Title" defaultValue={tskTitle} />
+            <TextArea handleTextArea={handleTextArea} label="Task Desc" defaultValue={taskDescription} />
 
             <Box sx={{ minWidth: 120, width: "90%", marginBottom: "1rem" }}>
                 <FormControl fullWidth>

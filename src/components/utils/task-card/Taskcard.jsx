@@ -11,7 +11,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import "./Taskcard.scss";
 import { useState } from "react";
 
-const TaskCard = ({title, description, id,handleDelete, openDrawer})=> {
+const TaskCard = ({title, description, id,handleDelete, handleEditIcon})=> {
 
     const [showConfirmDelete, setShowConfirmDelete] = useState(false);
 
@@ -23,7 +23,7 @@ const TaskCard = ({title, description, id,handleDelete, openDrawer})=> {
                 <PreviewIcon fontSize="small" />
             </IconButton>
             <IconButton aria-label="edit">
-                <BorderColorIcon fontSize="small" onClick={()=> openDrawer()} />
+                <BorderColorIcon fontSize="small" onClick={()=> handleEditIcon({"title": title, "description": description})} />
             </IconButton>
             <IconButton aria-label="delete">
                 <DeleteIcon onClick={()=> {setShowConfirmDelete(true)}} fontSize="small" color="error" />

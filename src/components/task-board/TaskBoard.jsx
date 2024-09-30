@@ -16,6 +16,7 @@ const TaskBoard = () => {
     const [openTaskList, setOpenTaskList] = useState([]);
     const [taskList, setTaskList] = useState([]);
     const [showEditTask, setShowEditTask] = useState(false);
+    const [taskToEdit, setTaskToEdit] = useState({})
 
     const navigate = useNavigate();
 
@@ -35,7 +36,8 @@ const TaskBoard = () => {
         setTaskList(openTaskList.filter((task)=> task.id !== id))
     }
 
-    const openDrawer = () => {
+    const handleEditIcon = (obj) => {
+        setTaskToEdit(obj)
         setShowEditTask(true)
     }
     const closeDrawer = () => {
@@ -63,7 +65,7 @@ const TaskBoard = () => {
                     <h5>OPEN</h5>
                     {openTaskList && openTaskList.map((task)=> {
                         return <TaskCard 
-                            openDrawer={openDrawer} 
+                            handleEditIcon={handleEditIcon} 
                             handleDelete={handleDelete} 
                             key={task.id} 
                             id={task.id} 
@@ -84,7 +86,13 @@ const TaskBoard = () => {
                 </div>
             </div>
 
-            <EditTask showEditTask={showEditTask} closeDrawer={closeDrawer} />
+            <EditTask 
+                showEditTask={showEditTask} 
+                closeDrawer={closeDrawer}
+                tskTitle={taskToEdit.title} 
+                taskDescription={taskToEdit.description}
+                // taskStatus={}
+            />
 
         </div>
     )
